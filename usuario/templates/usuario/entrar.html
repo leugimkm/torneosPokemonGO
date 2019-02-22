@@ -1,0 +1,38 @@
+{% extends "liga/base.html" %}
+{% load staticfiles%}
+{% block content %}
+{% if messages %}
+  {%for message in messages %}
+  <div class="alert alert-success" role="alert">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+{% endif %}
+<div class="row" style="height:80vh">
+  <div class="col-sm-12 my-auto">
+    <div class="card border-primary mb-3">
+      <div class="card-body text-primary">
+        <h5 class="card-title text-center">Entrar</h5>
+        <form method="POST">{% csrf_token %}
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Usuario</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="username" required autofocus id="id_username">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" name="password" required id="id_password">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-success">Ingresar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>{% endblock %}

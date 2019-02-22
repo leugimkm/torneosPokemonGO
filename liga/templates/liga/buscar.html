@@ -1,0 +1,23 @@
+{% extends "liga/base.html" %}
+{% load staticfiles%}
+{% block content %}
+<div class="row" style="height:80vh">
+  <div class="col-sm-12 my-auto">
+    <div class="card text-white bg-dark mb-3">
+      <div class="card-header text-center">Resultado</div>
+      <div class="card-body">
+        <p class="card-text">
+        {% for result in results %}
+        {% if result.profile.team == 'Valor' %}
+        <p class="text-danger">{{ result.profile.nivel}} - {{ result.profile.user }}</p>
+        {% elif result.profile.team == 'Mystic' %}
+        <p class="text-primary">{{ result.profile.nivel}} - {{ result.profile.user }}</p>
+        {% else %}
+        <p class="text-warning">{{ result.profile.nivel}} - {{ result.profile.user }}</p>
+        {% endif %}
+        {% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>{% endblock %}

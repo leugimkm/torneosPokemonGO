@@ -1,0 +1,70 @@
+{% extends "liga/base.html" %}
+{% load staticfiles%}
+{% block content %}
+<h4 class="text-center text-muted">Lista de entrenadores por equipo</h4>
+<div class="container text-center mt-5">
+  <div type="button" class="btn" data-toggle="modal" data-target="#redModal">
+    <img src="{% static 'usuario/img/team_red.png' %}" style="width:80px; cursor:pointer">
+  </div>
+</div>
+<div class="container text-center mt-4">
+  <div type="button" class="btn" data-toggle="modal" data-target="#blueModal">
+    <img src="{% static 'usuario/img/team_blue.png' %}" style="width:80px; cursor:pointer">
+  </div>
+</div>
+<div class="container text-center mt-4">
+  <div type="button" class="btn" data-toggle="modal" data-target="#yellowModal">
+    <img src="{% static 'usuario/img/team_yellow.png' %}" style="width:80px; cursor:pointer">
+  </div>
+</div>
+<div class="modal fade" id="redModal" tabindex="-1" role="dialog" aria-labelledby="redModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="redModalTitle">Team Valor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% for entrenador in entrenadores %}{% if entrenador.profile.team == 'Valor' %}
+        <p class="bg-transparent text-center">{{entrenador.username}} ({{entrenador.profile.nivel}})</p>
+        {% endif %}{% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="blueModal" tabindex="-1" role="dialog" aria-labelledby="blueModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="blueModalTitle">Team Mystic</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% for entrenador in entrenadores %}{% if entrenador.profile.team == 'Mystic' %}
+        <p class="bg-transparent text-center">{{entrenador.username}} ({{entrenador.profile.nivel}})</p>
+        {% endif %}{% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="yellowModal" tabindex="-1" role="dialog" aria-labelledby="yellowModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-white">
+        <h5 class="modal-title" id="yellowModalTitle">Team Instinct</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% for entrenador in entrenadores %}{% if entrenador.profile.team == 'Instinct' %}
+        <p class="bg-transparent text-center">{{entrenador.username}} ({{entrenador.profile.nivel}})</p>
+        {% endif %}{% endfor %}
+      </div>
+    </div>
+  </div>
+</div>{% endblock %}

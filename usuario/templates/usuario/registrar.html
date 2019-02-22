@@ -1,0 +1,72 @@
+{% extends "liga/base.html" %}
+{% load staticfiles%}
+{% block content %}
+{% if messages %}
+  {%for message in messages %}
+  <div class="alert alert-success" role="alert">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+{% endif %}
+<div class="row" style="height:80vh">
+  <div class="col-sm-12 my-auto">
+    <div class="card border-primary mb-3">
+      <div class="card-body text-primary">
+        <h5 class="card-title text-center">Registrarse</h5>
+        <form method="POST">{% csrf_token %}
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Ingresa un nombre de usuario</label>
+            <div class="col-sm-10">
+              {{form.username}}
+              <small class="form-text text-muted">
+                {{form.username.help_text}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Selecciona tu sexo</label>
+            <div class="col-sm-10">
+              <select name="sexo" class="form-control" id="id_sexo">
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+              <label for="" class="col-sm-2 col-form-label">Selecciona tu equipo</label>
+              <div class="col-sm-10">
+                <select name="team" class="form-control" id="id_team">
+                  <option value="Valor">Valor</option>
+                  <option value="Mystic">Mystic</option>
+                  <option value="Instinct">Instinct</option>
+                </select>
+              </div>
+            </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Establece una contraseña</label>
+            <div class="col-sm-10">
+              {{form.password1}}
+              <small class="form-text text-muted">
+                {{form.password1.help_text}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Verifica la contraseña</label>
+            <div class="col-sm-10">
+              {{form.password2}}
+              <small class="form-text text-muted">
+                {{form.password2.help_text}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary rounded-pill">Crear cuenta</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>{% endblock %}

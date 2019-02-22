@@ -1,0 +1,53 @@
+{% extends "liga/base.html" %}
+{% load static %}
+{% load staticfiles%}
+{% block content %}
+{% if messages %}
+  {%for message in messages %}
+  <div class="alert alert-success" role="alert">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+{% endif %}
+<div class="row" style="height:80vh">
+  <div class="col-sm-12 my-auto">
+    <div class="card mb-3">
+      <div class="card-header">Actualizar datos</div>
+        {% if user.profile.team == 'Valor' %}
+        <div class="card-body" style="
+              background-image: url('{% static 'usuario/img/profile_red.png' %}') ;
+              background-size: auto; background-position: top right;
+              background-repeat: no-repeat;">
+        {% elif user.profile.team == 'Mystic' %}
+        <div class="card-body" style="
+        background-image: url('{% static 'usuario/img/profile_blue.png' %}') ;
+        background-size: auto; background-position: top right;
+        background-repeat: no-repeat;">
+        {% else %}
+        <div class="card-body" style="
+        background-image: url('{% static 'usuario/img/profile_yellow.png' %}') ;
+        background-size: auto; background-position: top right;
+        background-repeat: no-repeat;">
+        {% endif %}
+        {% if user.profile.sexo == 'Masculino' %}Bienvenido {% else %}
+        Bienvenida{% endif %} {{ user.username }}, tu nivel actual es {{user.profile.nivel}}.
+        Deseas modificarlo?
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+          <div class="form-group row">
+            <label for="nivel" class="col-sm-2 col-form-label text-primary">Nivel</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="nivel" value="{{user.profile.nivel}}" min="1" id="id_nivel" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-success">Guardar Cambios</button>
+              <a href="{% url 'liga-home' %}" class="btn btn-secondary">Inicio</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

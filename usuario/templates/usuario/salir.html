@@ -1,0 +1,13 @@
+{% extends "liga/base.html" %}
+{% load staticfiles%}
+{% block content %}
+<div class="row" style="height:80vh">
+  <div class="col-sm-12 my-auto">
+    <div class="card card-block w-100 mx-auto">
+      <div class="card-body text-center text-primary">
+          <h5 class="card-title mb-4">Acabas de salir del portal</h5>
+          <a href="{% url 'entrar' %}" class="btn btn-success">Volver a Entrar</a>
+      </div>
+    </div>
+  </div>
+</div>{% endblock %}
