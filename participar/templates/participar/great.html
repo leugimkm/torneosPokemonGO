@@ -1,0 +1,43 @@
+{% extends "liga/base.html" %}
+{% load static %}
+{% load staticfiles%}
+{% block content %}
+<div class="media mt-4">
+    <img src="{% static 'participar/img/pogo_great_league.png' %}" class="align-self-center mr-3" style="width:30%">
+    <div class="media-body">
+    <h5 class="mt-0"><b>Liga Super Ball</b></h5>
+    PC máximos por Pokémon 1.500<br>
+    <div class="dropdown">
+      <button class="btn btn-success dropdown-toggle mt-3" type="button" id="dropdownMenuButton" 
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Participar
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form class="px-4 py-3" method="POST">{% csrf_token %}
+          <div class="form-group">
+            {{form.as_p}}
+          </div>
+          <button type="submit" class="btn btn-primary">Confirmar</button>
+        </form>
+      </div>
+    </div>
+    </div>
+</div>
+{% if messages %}
+  {%for message in messages %}
+  <div class="alert alert-success mt-4" role="alert">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+{% endif %}
+<div class="card mt-4 border-0">
+  <div class="card-header bg-dark text-white">
+    Lista de participantes ({{users.count}})
+  </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      {% for entrenador in users %}
+      <li class="list-group-item">{{entrenador.user}}</li>{% endfor %}
+    </ul>
+  </div>
+</div>{% endblock %}
