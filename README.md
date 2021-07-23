@@ -1,5 +1,9 @@
 # Torneos Pokemon GO
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## WebApp (Django, Python 3.x)
+
 Aplicacion web para administrar eventos en una comunidad de entrenadores (Pokemon GO). Dentro de las funcionalidades se tiene:
 * Reglamento
 * Registro de usuarios por equipos (Valor, Mystic, Instinct)
